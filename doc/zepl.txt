@@ -140,7 +140,7 @@ and how to extend it.
 If a REPL isn't running, the `:Repl` command will open a new REPL, otherwise
 it will "jump" to the running REPL.  The command follows this format:
 >
-    :[mods] [size] Repl [command]
+    :[mods] [size] Repl[!] [command]
 <
 `[mods]` (optional) is any number of |:command-modifiers|.  (E.g. |:vertical|
 will open the REPL in a vertical split, and |:hide| will start the REPL in the
@@ -149,6 +149,8 @@ background.)  `[mods]` will be ignored if a REPL window is already open.
 `[size]` (optional) is used to set the height of the REPL window.  (If `[mods]`
 contains |:vertical| this will set the width of the REPL window.)  `[size]` will
 be ignored if a REPL window is already open.
+
+`[!]` (optional) will open the repl without making it the active window.
 
 `[command]` (optional) is the command run to start the REPL.  If omitted and,
 1. no REPL is running: Zepl will attempt to start a REPL using the command in

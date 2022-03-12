@@ -46,6 +46,9 @@ function! zepl#start(cmd, ...) abort
     endif
 
     call zepl#jump(get(a:, 1, ''), get(a:, 2, 0))
+    if get(a:, 3, 0)
+        wincmd p
+    endif
 endfunction
 
 function! s:repl_closed(...) abort

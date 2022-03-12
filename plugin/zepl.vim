@@ -5,7 +5,7 @@
 " Legal:        No rights reserved.  Public domain.
 " ====================================================
 
-command! -nargs=* -count -complete=shellcmd Repl call zepl#start(<q-args>, <q-mods>, <count>)
+command! -bang -nargs=* -count -complete=shellcmd Repl call zepl#start(<q-args>, <q-mods>, <count>, <bang>0)
 
 function! s:send_region_or_text(text, ...) abort
     call zepl#send((a:text !=# '' ? a:text : getline(a:1, a:2)), len(a:3))
