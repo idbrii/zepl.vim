@@ -9,16 +9,6 @@ and interact with a running REPL.
 <!-- TODO: GIF and/or images -->
 
 
-> **Note**<br>
-> Zepl is currently unmaintained.  It is remarkably stable though, so I doubt
-> you'd encounter many, if any, issues using it.  I have since switched to
-> [Conjure][] which is essentially what I envisioned a possible Zepl 2 being.
-> If you would like to take over maintenance of Zepl, shoot me an
-> [email](https://www.alexvear.com/contact/).
-
-[Conjure]: https://github.com/Olical/conjure
-
-
 ## Why use Zepl?
 
 Simplicity is at the core of Zepl.  It is carefully designed around the
