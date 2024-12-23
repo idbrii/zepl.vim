@@ -100,10 +100,14 @@ function! zepl#jump(...) abort
     endif
 endfunction
 
+" Extracts config for the current buffer or current filetype. There's no
+" individual key fallbacks for configs: each filetype has a completely
+" separate config.
 function! zepl#config(option, default)
-    return get(get(b:, 'repl_config',
-        \          get(get(g:, 'repl_config', {}), &ft, {})),
-        \      a:option, a:default)
+    let global_cfg = get(g:, 'repl_config', {})
+    let cfg = get(b:, 'repl_config',
+        \          get(global_cfg, &ft, get(global_cfg, 'FALLBACK', {})))
+    return get(cfg, a:option, a:default)
 endfunction
 
 function! zepl#generic_formatter(lines)

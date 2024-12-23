@@ -419,7 +419,16 @@ configure default REPLs without needing to create lots of |autocmd|s or
                 \ }
 <
 If no 'b:repl_config' variable exists, Zepl will use 'g:repl_config' as a
-fallback.
+fallback. If there's no entry in 'g:repl_config' for the current filetype,
+Zepl will use 'g:repl_config.FALLBACK' as an additional fallback so
+|:Repl| will always open a something (even when editing a readme).
+>
+    nnoremap gZ <Cmd>Repl<CR>
+    let g:repl_config = {
+                \   'FALLBACK { 'cmd': &shell }
+                \   'javascript': { 'cmd': 'node' }
+                \ }
+<
 
 ..............................................................................
                                           *'ZeplTerminalWinOpen'*  *zepl-autocmd*
