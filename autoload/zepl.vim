@@ -44,6 +44,7 @@ function! zepl#start(cmd, ...) abort
                         \ 'norestore': 1,
                         \ 'hidden': 1
                         \ })
+            call setbufvar(s:repl_bufnr, 'bufhidden', 'hidden')
         endif
 
         call setbufvar(s:repl_bufnr, 'zepl_cmd', cmd)
