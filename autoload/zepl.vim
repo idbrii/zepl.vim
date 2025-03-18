@@ -11,13 +11,17 @@ function! s:error(msg) abort
     echohl ErrorMsg | echo a:msg | echohl NONE
 endfunction
 
+function! s:has_repl_buf() abort
+    return s:repl_bufnr && bufnr(s:repl_bufnr) > -1
+endf
+
 " zepl#start(cmd [, {mods} [, {size}]])
 function! zepl#start(cmd, ...) abort
     if s:repl_bufnr && !empty(a:cmd)
         call s:error('REPL already running')
         return
 
-    elseif !s:repl_bufnr
+    elseif !s:has_repl_buf()
         let cmd = trim((empty(a:cmd) ? zepl#config('cmd', '') : a:cmd))
 
         if empty(cmd)
@@ -59,7 +63,7 @@ endfunction
 
 " zepl#jump([{mods} [, {size}]])
 function! zepl#jump(...) abort
-    if !s:repl_bufnr
+    if !s:has_repl_buf()
         call s:error('No active REPL')
         return
     endif
@@ -119,7 +123,7 @@ endfunction
 
 " zepl#send({text} [, {verbatim}])
 function! zepl#send(text, ...) abort
-    if !s:repl_bufnr
+    if !s:has_repl_buf()
         call s:error('No active REPL')
         return
     endif
